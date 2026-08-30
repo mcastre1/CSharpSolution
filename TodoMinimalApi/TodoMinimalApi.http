@@ -36,3 +36,21 @@ Content-Type: application/json
 }
 
 ###
+@id=1
+PATCH {{TodoMinimalApi_HostAddress}}/todoitems/{{id}}
+Content-Type: application/json
+
+{
+  "name": "run errands"
+}
+
+###
+
+PATCH {{TodoMinimalApi_HostAddress}}/todoitems/{{id}}
+Content-Type: application/json
+
+{
+  //TodoPatchDto
+}
+
+###
