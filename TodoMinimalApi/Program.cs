@@ -24,6 +24,7 @@ app.MapPost("/todoitems", async (Todo todo, TodoDb db) => {
     return Results.Created($"/todoitems/{todo.Id}", todo);
 });
 
+// Requires all todo attributes to be able to update row.
 app.MapPut("/todoitems/{id}", async (int id, Todo inputTodo, TodoDb db) =>
 {
     var todo = await db.Todos.FindAsync(id);
@@ -50,6 +51,26 @@ app.MapDelete("/todoitems/{id}", async (int id, TodoDb db) =>
     }
 
     return Results.NotFound();
+});
+
+app.MapPatch("/todoitems/{id}", async (int id, TodoPatchDto inputTodo, TodoDb db) =>
+{
+    var todo = await db.Todos.FindAsync(id);
+    if (todo is null)
+    {
+        return Results.NotFound();
+    }
+
+    if(inputTodo.Name is not null) {
+        todo.Name = inputTodo.Name;
+    }
+    if (inputTodo.isComplete is not null)
+    {
+        todo.isComplete = inputTodo.isComplete.Value;
+    }
+
+    await db.SaveChangesAsync();
+    return Results.NoContent();
 });
 
 app.Run();
