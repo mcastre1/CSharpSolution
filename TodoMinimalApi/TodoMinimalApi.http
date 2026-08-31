@@ -45,12 +45,12 @@ Content-Type: application/json
 }
 
 ###
-
+@id=3
 PATCH {{TodoMinimalApi_HostAddress}}/todoitems/{{id}}
 Content-Type: application/json
 
 {
-  //TodoPatchDto
+  "name": "walk errands"
 }
 
 ###
