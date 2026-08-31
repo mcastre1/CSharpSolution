@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="ControllerBasedAPI/ControllerBasedAPI.csproj" Id="93a1a333-71a9-405e-88b4-69a764ba919f" />
   <Project Path="TodoMinimalApi/TodoMinimalApi.csproj" />
 </Solution>
