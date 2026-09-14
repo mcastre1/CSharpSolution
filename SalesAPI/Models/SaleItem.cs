@@ -9,7 +9,7 @@
         public decimal UnitPrice { get; set; }
         public decimal LineTotal => Quantity * UnitPrice;
 
-        public required Sale Sale { get; set; }
-        public required Product Product { get; set; }
+        public Sale? Sale { get; set; }
+        public Product? Product { get; set; }
     }
 }

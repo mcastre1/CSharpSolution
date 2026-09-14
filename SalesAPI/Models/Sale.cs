@@ -9,7 +9,7 @@
 
         public List<SaleItem> SaleItems { get; set; } = new();
 
-        public required Customer Customer { get; set; }
-        public required SalesRep SalesRep { get; set; }
+        public  Customer? Customer { get; set; }
+        public  SalesRep? SalesRep { get; set; }
     }
 }
