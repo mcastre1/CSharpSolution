@@ -51,12 +51,19 @@ namespace SalesAPI.Controllers
 
             foreach (var item in sale.SaleItems)
             {
+                var product = await _context.Products.FindAsync(item.ProductId);
+                
+                if (product == null)
+                {
+                    return BadRequest($"Product with ID {item.ProductId} does not exist.");
+                }
+
                 _context.SaleItems.Add(new SaleItem
                 {
                     SaleId = newSale.Id,
                     ProductId = item.ProductId,
                     Quantity = item.Quantity,
-                    UnitPrice = item.UnitPrice
+                    UnitPrice = product.Price
                 });
             }
 
@@ -86,12 +93,20 @@ namespace SalesAPI.Controllers
 
             foreach (var item in sale.SaleItems)
             {
+
+                var product = await _context.Products.FindAsync(item.ProductId);
+
+                if (product == null)
+                {
+                    return BadRequest($"Product with ID {item.ProductId} does not exist.");
+                }
+
                 _context.SaleItems.Add(new SaleItem
                 {
                     SaleId = existingSale.Id,
                     ProductId = item.ProductId,
                     Quantity = item.Quantity,
-                    UnitPrice = item.UnitPrice
+                    UnitPrice = product.Price
                 });
             }
 
