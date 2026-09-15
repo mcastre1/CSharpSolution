@@ -39,6 +39,14 @@ namespace SalesAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateSale(Sale sale)
         {
+            var customerExists = await _context.Customers.AnyAsync(c => c.Id == sale.CustomerId);
+            var salesRepExists = await _context.SalesReps.AnyAsync(c => c.Id == sale.SalesRepId);
+
+            if (!customerExists)
+                return BadRequest($"Customer with ID {sale.CustomerId} does not exist.");
+            if (!salesRepExists)
+                return BadRequest($"SalesRep with ID {sale.SalesRepId} does not exist.");
+
             var newSale = new Sale
             {
                 CustomerId = sale.CustomerId,
@@ -78,6 +86,14 @@ namespace SalesAPI.Controllers
             {
                 return BadRequest();
             }
+
+            var customerExists = await _context.Customers.AnyAsync(c => c.Id == sale.CustomerId);
+            var salesRepExists = await _context.SalesReps.AnyAsync(c => c.Id == sale.SalesRepId);
+
+            if (!customerExists)
+                return BadRequest($"Customer with ID {sale.CustomerId} does not exist.");
+            if (!salesRepExists)
+                return BadRequest($"SalesRep with ID {sale.SalesRepId} does not exist.");
 
             var existingSale = await _context.Sales.Include(s => s.SaleItems).FirstOrDefaultAsync(s => s.Id == id);
 
