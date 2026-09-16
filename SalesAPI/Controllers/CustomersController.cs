@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SalesAPI.Data;
 using SalesAPI.Models;
+using SalesAPI.Dtos;
 
 namespace SalesAPI.Controllers
 {
@@ -38,11 +39,19 @@ namespace SalesAPI.Controllers
 
         // POST: api/Customers
         [HttpPost]
-        public async Task<ActionResult> CreateCustomer(Customer customer)
+        public async Task<ActionResult> CreateCustomer(CustomerCreateDto customer)
         {
-            _context.Customers.Add(customer);
+            var newCustomer = new Customer
+            {
+                FirstName = customer.FirstName,
+                LastName = customer.LastName,
+                Phone = customer.PhoneNumber,
+                Email = customer.Email
+            };
+
+            _context.Customers.Add(newCustomer);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetCustomer), new { id = customer.Id }, customer);
+            return CreatedAtAction(nameof(GetCustomer), new { id = newCustomer.Id }, customer);
         }
 
         // PUT: api/Customers/5
