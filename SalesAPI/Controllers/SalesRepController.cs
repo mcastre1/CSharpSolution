@@ -2,6 +2,7 @@
 using SalesAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using SalesAPI.Models;
+using SalesAPI.Dtos;
 
 namespace SalesAPI.Controllers
 {
@@ -57,12 +58,18 @@ namespace SalesAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateSalesRep(SalesRep salesrep)
+        public async Task<IActionResult> CreateSalesRep(SalesRepCreateDto salesrepdto)
         {
-            _context.SalesReps.Add(salesrep);
+            var newSalesRep = new SalesRep
+            {
+                FirstName = salesrepdto.FirstName,
+                LastName = salesrepdto.LastName
+            };
+
+            _context.SalesReps.Add(newSalesRep);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetSalesRep", new { id = salesrep.Id }, salesrep);
+            return CreatedAtAction("GetSalesRep", new { id = newSalesRep.Id }, salesrepdto);
         }
 
         [HttpDelete("{id}")]
