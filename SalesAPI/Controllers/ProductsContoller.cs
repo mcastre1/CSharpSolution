@@ -2,6 +2,7 @@
 using SalesAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using SalesAPI.Models;
+using SalesAPI.Dtos;
 
 namespace SalesAPI.Controllers
 {
@@ -59,12 +60,17 @@ namespace SalesAPI.Controllers
 
         // Post: api/Products
         [HttpPost]
-        public async Task<IActionResult> PostProduct(Product product)
+        public async Task<IActionResult> PostProduct(ProductCreateDto productdto)
         {
-            _context.Products.Add(product);
+            var newProduct = new Product{
+                Name = productdto.Name,
+                Price = productdto.Price
+            };
+
+            _context.Products.Add(newProduct);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
+            return CreatedAtAction("GetProduct", new { id = newProduct.Id }, productdto);
         }
 
         // Delete: api/Products/5
