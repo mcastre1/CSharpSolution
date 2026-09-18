@@ -39,23 +39,22 @@ namespace SalesAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutSalesRep(int id, SalesRep salesrep)
+        public async Task<IActionResult> PutSalesRep(int id, SalesRepPutDto salesrepdto)
         {
-            if(id != salesrep.Id)
-            {
-                return BadRequest();
-            }
+            var existingSalesRep = await _context.SalesReps.FindAsync(id);
 
-            if (!SalesRepExists(id))
+            if (existingSalesRep == null)
             {
                 return NotFound();
             }
 
-            _context.Entry(salesrep).State = EntityState.Modified;
+            existingSalesRep.FirstName = salesrepdto.FirstName;
+            existingSalesRep.LastName = salesrepdto.LastName;
+
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
+        }   
 
         [HttpPost]
         public async Task<IActionResult> CreateSalesRep(SalesRepCreateDto salesrepdto)
