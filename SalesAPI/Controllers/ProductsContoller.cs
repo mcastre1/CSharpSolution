@@ -52,7 +52,6 @@ namespace SalesAPI.Controllers
             existingProduct.Name = productdto.Name;
             existingProduct.Price = productdto.Price;
 
-            _context.Entry(existingProduct).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return NoContent();
