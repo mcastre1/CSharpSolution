@@ -39,19 +39,20 @@ namespace SalesAPI.Controllers
 
         // Put: api/Products/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProdcut(int id, Product product)
+        public async Task<IActionResult> PutProdcut(int id, ProductUpdateDto productdto)
         {
-            if (id != product.Id)
-            {
-                return BadRequest();
-            }
 
-            if (!ProductExists(id))
+            var existingProduct = await _context.Products.FindAsync(id);
+
+            if (existingProduct == null)
             {
                 return NotFound();
             }
 
-            _context.Entry(product).State = EntityState.Modified;
+            existingProduct.Name = productdto.Name;
+            existingProduct.Price = productdto.Price;
+
+            _context.Entry(existingProduct).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return NoContent();
