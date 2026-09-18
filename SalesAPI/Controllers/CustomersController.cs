@@ -56,19 +56,20 @@ namespace SalesAPI.Controllers
 
         // PUT: api/Customers/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateCustomer(int id, Customer customer)
+        public async Task<ActionResult> UpdateCustomer(int id, CustomerPutDto customerdto)
         {
-            if (id != customer.Id)
-            {
-                return BadRequest();
-            }
+            var existingCustomer = await _context.Customers.FindAsync(id);
             
-            if (!CustomerExists(id))
+            if (existingCustomer == null)
             {
                 return NotFound();
             }
 
-            _context.Entry(customer).State = EntityState.Modified;
+            existingCustomer.Email = customerdto.Email;
+            existingCustomer.FirstName = customerdto.FirstName;
+            existingCustomer.LastName = customerdto.LastName;
+            existingCustomer.Phone = customerdto.PhoneNumber;
+
             await _context.SaveChangesAsync();
             return NoContent();
         }
