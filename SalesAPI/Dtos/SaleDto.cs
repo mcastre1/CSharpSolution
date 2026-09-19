@@ -7,6 +7,6 @@
         public int SalesRepId { get; set; }
         public DateTime SaleDate { get; set; }
 
-        public List<SaleItem> SaleItems { get; set; } = new();
+        public List<SaleItemDto> SaleItems { get; set; } = new();
     }
 }
