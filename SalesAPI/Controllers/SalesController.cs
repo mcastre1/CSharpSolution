@@ -20,11 +20,21 @@ namespace SalesAPI.Controllers
         {
             var sales = await _context.Sales.Include(s => s.SaleItems).ToListAsync();
 
-            foreach (sales)
+            var dtoSales = sales.Select(s => new SaleDto
             {
+                CustomerId = s.CustomerId,
+                Id = s.Id,
+                SaleDate = s.SaleDate,
+                SalesRepId = s.SalesRepId,
+                SaleItems = s.SaleItems.Select(i => new SaleItemDto
+                {
+                    ProductId = i.ProductId,
+                    Quantity = i.Quantity,
+                    UnitPrice = i.UnitPrice
+                }).ToList()
+            }).ToList();
 
-            }
-            return Ok(sales);
+            return Ok(dtoSales);
         }
 
         [HttpGet("{id}")]
