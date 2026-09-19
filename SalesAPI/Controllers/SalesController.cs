@@ -19,6 +19,11 @@ namespace SalesAPI.Controllers
         public async Task<IActionResult> GetAll()
         {
             var sales = await _context.Sales.Include(s => s.SaleItems).ToListAsync();
+
+            foreach (sales)
+            {
+
+            }
             return Ok(sales);
         }
 
