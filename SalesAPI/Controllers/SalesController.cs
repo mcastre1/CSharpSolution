@@ -47,7 +47,20 @@ namespace SalesAPI.Controllers
                 return NotFound();
             }
 
-            return Ok(sale);
+            var dtoSale = new SaleDto
+            {
+                CustomerId = sale.CustomerId,
+                SaleDate = sale.SaleDate,
+                SalesRepId = sale.SalesRepId,
+                SaleItems = sale.SaleItems.Select(item => new SaleItemDto
+                {
+                    ProductId = item.ProductId,
+                    Quantity = item.Quantity,
+                    UnitPrice = item.UnitPrice
+                }).ToList()
+            };
+
+            return Ok(dtoSale);
 
         }
 
