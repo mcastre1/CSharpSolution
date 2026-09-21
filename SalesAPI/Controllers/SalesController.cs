@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SalesAPI.Data;
 using SalesAPI.Models;
+using SalesAPI.Dtos;
 
 namespace SalesAPI.Controllers
 {
@@ -65,27 +66,27 @@ namespace SalesAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateSale(Sale sale)
+        public async Task<IActionResult> CreateSale(SaleCreateDto saledto)
         {
-            var customerExists = await _context.Customers.AnyAsync(c => c.Id == sale.CustomerId);
-            var salesRepExists = await _context.SalesReps.AnyAsync(c => c.Id == sale.SalesRepId);
+            var customerExists = await _context.Customers.AnyAsync(c => c.Id == saledto.CustomerId);
+            var salesRepExists = await _context.SalesReps.AnyAsync(c => c.Id == saledto.SalesRepId);
 
             if (!customerExists)
-                return BadRequest($"Customer with ID {sale.CustomerId} does not exist.");
+                return BadRequest($"Customer with ID {saledto.CustomerId} does not exist.");
             if (!salesRepExists)
-                return BadRequest($"SalesRep with ID {sale.SalesRepId} does not exist.");
+                return BadRequest($"SalesRep with ID {saledto.SalesRepId} does not exist.");
 
             var newSale = new Sale
             {
-                CustomerId = sale.CustomerId,
-                SalesRepId = sale.SalesRepId,
+                CustomerId = saledto.CustomerId,
+                SalesRepId = saledto.SalesRepId,
                 SaleDate = DateTime.UtcNow
             };
 
             _context.Sales.Add(newSale);
             await _context.SaveChangesAsync();
 
-            foreach (var item in sale.SaleItems)
+            foreach (var item in saledto.SaleItems)
             {
                 var product = await _context.Products.FindAsync(item.ProductId);
                 
