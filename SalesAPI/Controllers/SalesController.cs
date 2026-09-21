@@ -109,20 +109,15 @@ namespace SalesAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateSale(int id, Sale sale)
+        public async Task<IActionResult> UpdateSale(int id, SaleUpdateDto saledto)
         {
-            if(id != sale.Id)
-            {
-                return BadRequest();
-            }
-
-            var customerExists = await _context.Customers.AnyAsync(c => c.Id == sale.CustomerId);
-            var salesRepExists = await _context.SalesReps.AnyAsync(c => c.Id == sale.SalesRepId);
+            var customerExists = await _context.Customers.AnyAsync(c => c.Id == saledto.CustomerId);
+            var salesRepExists = await _context.SalesReps.AnyAsync(c => c.Id == saledto.SalesRepId);
 
             if (!customerExists)
-                return BadRequest($"Customer with ID {sale.CustomerId} does not exist.");
+                return BadRequest($"Customer with ID {saledto.CustomerId} does not exist.");
             if (!salesRepExists)
-                return BadRequest($"SalesRep with ID {sale.SalesRepId} does not exist.");
+                return BadRequest($"SalesRep with ID {saledto.SalesRepId} does not exist.");
 
             var existingSale = await _context.Sales.Include(s => s.SaleItems).FirstOrDefaultAsync(s => s.Id == id);
 
@@ -131,12 +126,12 @@ namespace SalesAPI.Controllers
                 return NotFound();
             }
 
-            existingSale.CustomerId = sale.CustomerId;
-            existingSale.SalesRepId = sale.SalesRepId;
+            existingSale.CustomerId = saledto.CustomerId;
+            existingSale.SalesRepId = saledto.SalesRepId;
 
             _context.SaleItems.RemoveRange(existingSale.SaleItems);
 
-            foreach (var item in sale.SaleItems)
+            foreach (var item in saledto.SaleItems)
             {
 
                 var product = await _context.Products.FindAsync(item.ProductId);
