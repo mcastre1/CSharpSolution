@@ -50,6 +50,7 @@ namespace SalesAPI.Controllers
 
             var dtoSale = new SaleDto
             {
+                Id = sale.Id,
                 CustomerId = sale.CustomerId,
                 SaleDate = sale.SaleDate,
                 SalesRepId = sale.SalesRepId,
