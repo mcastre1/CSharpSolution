@@ -12,6 +12,7 @@
     "axios": "^1.20.0",
     "mdb-vue-ui-kit": "^7.0.0",
     "vue": "^3.5.42",
+    "vue-router": "^5.3.1",
     "vuetify": "^4.2.2"
   },
   "devDependencies": {
