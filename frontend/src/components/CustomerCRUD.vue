@@ -14,20 +14,16 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Phone</th>
+                <th>Customer</th>
+                <th>Actions</th>
             </tr>
         </thead>
 
         <tbody>
             <tr v-for="customer in customers" :key="customer.id">
                 <td>{{ customer.id }}</td>
-                <td>{{ customer.firstName }}</td>
-                <td>{{ customer.lastName }}</td>
-                <td>{{ customer.email }}</td>
-                <td>{{ customer.phone }}</td>
+                <td>{{ customer.firstName }} {{ customer.lastName  }}</td>
+                <td>Read Delete</td>
             </tr>
         </tbody>
     </table>
