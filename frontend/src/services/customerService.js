@@ -1,8 +1,9 @@
 import axios from "axios";
 
-const API = "https://localhost:5001/api";
+const API = "https://localhost:7152/api";
 
 export async function getAllCustomers() {
+    console.log("Hello");
     return axios.get(`${API}/customers`);
 }
 

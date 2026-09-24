@@ -6,6 +6,7 @@
 
     onMounted(async () => {
         customers.value = await getAllCustomers();
+        console.log(customers);
     });
 </script>
 <template>
