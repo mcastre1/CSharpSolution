@@ -6,36 +6,29 @@
 
     onMounted(async () => {
         customers.value = await getAllCustomers();
-        console.log(customers);
+        console.log(customers.value);
     });
 </script>
 <template>
-    <v-table>
+    <table>
         <thead>
             <tr>
-                <th class="text-left">
-                    Id
-                </th>
-                <th class="text-left">
-                    First Name
-                </th>
-                <th class="text-left">
-                    Last Name
-                </th>
-                <th class="text-left">
-                    Email
-                </th>
-                <th class="text-left">
-                    Phone Number
-                </th>
-            </tr>
-            <tr v-for="customer in customers" :key="customer.Id">
-                <td>{{customer.Id}}</td>
-                <td>{{customer.FirstName}}</td>
-                <td>{{customer.LastName}}</td>
-                <td>{{customer.Email}}</td>
-                <td>{{customer.Phone}}</td>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
             </tr>
         </thead>
-    </v-table>
+
+        <tbody>
+            <tr v-for="customer in customers" :key="customer.id">
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.firstName }}</td>
+                <td>{{ customer.lastName }}</td>
+                <td>{{ customer.email }}</td>
+                <td>{{ customer.phone }}</td>
+            </tr>
+        </tbody>
+    </table>
 </template>
