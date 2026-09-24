@@ -1,6 +1,7 @@
 <script setup>
     import { ref, onMounted } from "vue";
-    import { getAllCustomers } from '../services/customerService'
+    import { getAllCustomers } from '../services/customerService';
+    import { MDBBtn, MDBTable} from 'mdb-vue-ui-kit';
 
     const customers = ref([]);
 
@@ -10,21 +11,21 @@
     });
 </script>
 <template>
-    <table>
+    <MDBTable>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Customer</th>
-                <th>Actions</th>
+                <th scope="col">Id</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
 
         <tbody>
-            <tr v-for="customer in customers" :key="customer.id">
+            <tr v-for="customer in customers" :key="customer.id" scope="row">
                 <td>{{ customer.id }}</td>
                 <td>{{ customer.firstName }} {{ customer.lastName  }}</td>
-                <td>Read Delete</td>
+                <td><MDBBtn color="primary">Primary</MDBBtn> Delete</td>
             </tr>
         </tbody>
-    </table>
+    </MDBTable>
 </template>
