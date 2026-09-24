@@ -24,7 +24,10 @@
             <tr v-for="customer in customers" :key="customer.id" scope="row">
                 <td>{{ customer.id }}</td>
                 <td>{{ customer.firstName }} {{ customer.lastName  }}</td>
-                <td><MDBBtn color="primary">Primary</MDBBtn> Delete</td>
+                <td>
+                    <MDBBtn color="info">Read</MDBBtn> 
+                    <MDBBtn color="danger">Delete</MDBBtn>
+                </td>
             </tr>
         </tbody>
     </MDBTable>
