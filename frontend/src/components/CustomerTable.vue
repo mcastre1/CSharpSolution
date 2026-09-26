@@ -6,18 +6,20 @@
 
     const customers = ref([]);
     const showModal = ref(false)
+    const selectedId = ref(null)
 
     onMounted(async () => {
         customers.value = await getAllCustomers();
         console.log(customers.value);
     });
 
-    function openModal() {
-        showModal.value = true
+    function openModal(id) {
+        selectedId.value = id;
+        showModal.value = true;
     }
 
     function closeModal() {
-        showModal.value = false
+        showModal.value = false;
     }
 </script>
 <template>
@@ -35,7 +37,7 @@
                 <td>{{ customer.id }}</td>
                 <td>{{ customer.firstName }} {{ customer.lastName  }}</td>
                 <td>
-                    <MDBBtn color="info" @click="openModal">Read</MDBBtn> 
+                    <MDBBtn color="info" @click="openModal(customer.id)">Read</MDBBtn> 
                     <MDBBtn color="danger">Delete</MDBBtn>
                 </td>
             </tr>
@@ -44,6 +46,7 @@
     <Modal 
         v-if="showModal"
         title="Add a new customer"
+        :customerId = "selectedId"
         @close="closeModal"
     >
         <p>This is inside the modal</p>

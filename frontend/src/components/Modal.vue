@@ -2,6 +2,7 @@
   <div class="modal-backdrop" @click.self="close">
     <div class="modal-content">
       <h2>{{ title }}</h2>
+      <h1>{{ customerId }}</h1>
 
       <slot></slot>
 
@@ -15,6 +16,10 @@ const props = defineProps({
   title: {
     type: String,
     default: ''
+  },
+  customerId: {
+    type: Number,
+    default: 0
   }
 })
 
