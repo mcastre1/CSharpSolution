@@ -1,6 +1,6 @@
 <script setup>
     import { ref, onMounted } from "vue";
-    import { getAllCustomers } from '../services/customerService';
+    import { getAllCustomers, getCustomer} from '../services/customerService';
     import { MDBBtn, MDBTable} from 'mdb-vue-ui-kit';
     import Modal from './Modal.vue';
 
@@ -13,8 +13,10 @@
         console.log(customers.value);
     });
 
-    function openModal(id) {
+    async function openModal(id){
         selectedId.value = id;
+        var data = await getCustomer(id);
+        console.log(data);
         showModal.value = true;
     }
 
