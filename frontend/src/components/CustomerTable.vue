@@ -5,8 +5,9 @@
     import Modal from './Modal.vue';
 
     const customers = ref([]);
-    const showModal = ref(false)
-    const selectedId = ref(null)
+    const showModal = ref(false);
+    const selectedId = ref(null);
+    const selectedCustomer = ref({});
 
     onMounted(async () => {
         customers.value = await getAllCustomers();
@@ -15,8 +16,7 @@
 
     async function openModal(id){
         selectedId.value = id;
-        var data = await getCustomer(id);
-        console.log(data);
+        selectedCustomer.value = await getCustomer(id);
         showModal.value = true;
     }
 
@@ -47,8 +47,7 @@
     </MDBTable>
     <Modal 
         v-if="showModal"
-        title="Add a new customer"
-        :customerId = "selectedId"
+        :customer = "selectedCustomer"
         @close="closeModal"
     >
         <p>This is inside the modal</p>

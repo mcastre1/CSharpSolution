@@ -1,8 +1,8 @@
 <template>
   <div class="modal-backdrop" @click.self="close">
     <div class="modal-content">
-      <h2>{{ title }}</h2>
-      <h1>{{ customerId }}</h1>
+      <h2>{{ customer.firstName + " " + customer.lastName}}</h2>
+      <h1>{{ customer.id }}</h1>
 
       <slot></slot>
 
@@ -13,13 +13,9 @@
 
 <script setup>
 const props = defineProps({
-  title: {
-    type: String,
-    default: ''
-  },
-  customerId: {
-    type: Number,
-    default: 0
+  customer: {
+    type: Object,
+    required: true
   }
 })
 
