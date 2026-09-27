@@ -23,6 +23,11 @@
     function closeModal() {
         showModal.value = false;
     }
+
+    function saveCustomer(customer) {
+        console.log("Saving customer");
+        console.log(customer);
+    }
 </script>
 <template>
     <MDBTable>
@@ -49,6 +54,7 @@
         v-if="showModal"
         :customer = "selectedCustomer"
         @close="closeModal"
+        @save="saveCustomer"
     >
         <p>This is inside the modal</p>
     </Modal>
