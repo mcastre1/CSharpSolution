@@ -13,6 +13,14 @@ export async function getCustomer(id) {
 }
 
 export async function updateCustomer(id, customer){
-    var res = await axios.put(`${API}/customers/${id}`, customer);
+    
+    var payload = {
+        firstName : customer.firstName,
+        lastName : customer.lastName,
+        email : customer.email,
+        phoneNumber : customer.phoneNumber,
+    };
+
+    var res = await axios.put(`${API}/customers/${id}`, payload);
     return res;
 }

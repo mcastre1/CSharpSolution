@@ -51,7 +51,9 @@ const props = defineProps({
 const emit = defineEmits(["close", "save"]);
 
 // Create a local editable copy so we don't mutate the parent directly
-const localCustomer = reactive({ ...props.customer });
+const localCustomer = reactive({ ...props.customer,
+  phoneNumber : props.customer.phone
+ });
 
 function close() {
   emit("close");

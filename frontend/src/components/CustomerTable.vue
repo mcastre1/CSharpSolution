@@ -1,6 +1,6 @@
 <script setup>
     import { ref, onMounted } from "vue";
-    import { getAllCustomers, getCustomer} from '../services/customerService';
+    import { getAllCustomers, getCustomer, updateCustomer} from '../services/customerService';
     import { MDBBtn, MDBTable} from 'mdb-vue-ui-kit';
     import Modal from './Modal.vue';
 
@@ -24,7 +24,8 @@
         showModal.value = false;
     }
 
-    function saveCustomer(customer) {
+    async function saveCustomer(customer) {
+        var res = await updateCustomer(customer.id, customer);
         console.log("Saving customer");
         console.log(customer);
     }
