@@ -28,6 +28,7 @@
         var res = await updateCustomer(customer.id, customer);
         console.log("Saving customer");
         console.log(customer);
+        customers.value = await getAllCustomers();
     }
 </script>
 <template>
