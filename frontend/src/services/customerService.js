@@ -9,5 +9,10 @@ export async function getAllCustomers() {
 
 export async function getCustomer(id) {
     var res = await axios.get(`${API}/customers/${id}`);
-    return res.data
+    return res.data;
+}
+
+export async function updateCustomer(id, customer){
+    var res = await axios.put(`${API}/customers/${id}`, customer);
+    return res;
 }
