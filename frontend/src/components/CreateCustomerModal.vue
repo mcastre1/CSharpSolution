@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import { reactive, defineEmits } from "vue";
+
 const emit = defineEmits(["close", "create"]);
 
 function close() {

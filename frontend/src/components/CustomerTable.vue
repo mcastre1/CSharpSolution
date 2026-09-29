@@ -3,11 +3,13 @@
     import { getAllCustomers, getCustomer, updateCustomer, deleteCustomer} from '../services/customerService';
     import { MDBBtn, MDBTable} from 'mdb-vue-ui-kit';
     import Modal from './Modal.vue';
+import CreateCustomerModal from "./CreateCustomerModal.vue";
 
     const customers = ref([]);
     const showModal = ref(false);
     const selectedId = ref(null);
     const selectedCustomer = ref({});
+    const showCreateModal = ref(false);
 
     onMounted(async () => {
         customers.value = await getAllCustomers();
@@ -20,8 +22,15 @@
         showModal.value = true;
     }
 
+    function openCreateModal() {
+        showCreateModal.value = true;
+    }
+
     function closeModal() {
         showModal.value = false;
+    }
+    function closeCreateModal() {
+        showCreateModal.value = false;
     }
 
     async function saveCustomer(customer) {
@@ -40,8 +49,13 @@
         await deleteCustomer(id);
         customers.value = await getAllCustomers();
     }
+
+    async function createCustomer(customer){
+        console.log("created customer")
+    }
 </script>
 <template>
+    <button @click="openCreateModal"> Create Customer </button>
     <MDBTable>
         <thead>
             <tr>
@@ -70,4 +84,11 @@
     >
         <p>This is inside the modal</p>
     </Modal>
+
+    <CreateCustomerModal
+        v-if="showCreateModal"
+        @close="closeCreateModal"
+        @create="createCustomer">
+        <p>Create Customer</p>
+    </CreateCustomerModal>
 </template>
