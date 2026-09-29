@@ -12,6 +12,11 @@ export async function getCustomer(id) {
     return res.data;
 }
 
+export async function deleteCustomer(id){
+    var res = await axios.delete(`${API}/customers/${id}`);
+    return res
+}
+
 export async function updateCustomer(id, customer){
     
     var payload = {
