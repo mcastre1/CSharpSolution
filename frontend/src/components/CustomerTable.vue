@@ -30,6 +30,14 @@
         console.log(customer);
         customers.value = await getAllCustomers();
     }
+
+    async function deleteCustomer(id){
+        if (!confirm("Are you sure you want to delete this customer?")) {
+            return;
+        }
+
+        console.log("deleted customer: " + id);
+    }
 </script>
 <template>
     <MDBTable>
@@ -47,7 +55,7 @@
                 <td>{{ customer.firstName }} {{ customer.lastName  }}</td>
                 <td>
                     <MDBBtn color="info" @click="openModal(customer.id)">Read</MDBBtn> 
-                    <MDBBtn color="danger">Delete</MDBBtn>
+                    <MDBBtn color="danger" @click="deleteCustomer(customer.id)">Delete</MDBBtn>
                 </td>
             </tr>
         </tbody>
