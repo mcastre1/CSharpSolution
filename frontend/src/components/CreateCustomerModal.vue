@@ -6,22 +6,22 @@
       <form class="form">
         <div class="form-group">
           <label>First Name</label>
-          <input type="text" />
+          <input type="text" v-model="newCustomer.firstName"/>
         </div>
 
         <div class="form-group">
           <label>Last Name</label>
-          <input type="text" />
+          <input type="text" v-model="newCustomer.lastName"/>
         </div>
 
         <div class="form-group">
           <label>Email</label>
-          <input type="email" />
+          <input type="email" v-model="newCustomer.email"/>
         </div>
 
         <div class="form-group">
           <label>Phone</label>
-          <input type="text" />
+          <input type="text" v-model="newCustomer.phone"/>
         </div>
       </form>
 
@@ -38,12 +38,19 @@ import { reactive, defineEmits } from "vue";
 
 const emit = defineEmits(["close", "create"]);
 
+const newCustomer = reactive({
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: ""
+})
+
 function close() {
     emit("close");
 }
 
 function create() {
-    emit("create");
+    emit("create", newCustomer);
     emit("close");
 }
 

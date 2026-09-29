@@ -51,7 +51,7 @@ import CreateCustomerModal from "./CreateCustomerModal.vue";
     }
 
     async function createCustomer(customer){
-        console.log("created customer")
+        console.log("created customer " + JSON.stringify(customer))
     }
 </script>
 <template>
