@@ -33,7 +33,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { reactive, defineEmits } from "vue";
 
 const emit = defineEmits(["close", "create"]);
