@@ -1,6 +1,6 @@
 <script setup>
     import { ref, onMounted } from "vue";
-    import { getAllCustomers, getCustomer, updateCustomer} from '../services/customerService';
+    import { getAllCustomers, getCustomer, updateCustomer, deleteCustomer} from '../services/customerService';
     import { MDBBtn, MDBTable} from 'mdb-vue-ui-kit';
     import Modal from './Modal.vue';
 
@@ -31,12 +31,14 @@
         customers.value = await getAllCustomers();
     }
 
-    async function deleteCustomer(id){
+    async function deleteSelected(id){
         if (!confirm("Are you sure you want to delete this customer?")) {
             return;
         }
 
         console.log("deleted customer: " + id);
+        await deleteCustomer(id);
+        customers.value = await getAllCustomers();
     }
 </script>
 <template>
@@ -55,7 +57,7 @@
                 <td>{{ customer.firstName }} {{ customer.lastName  }}</td>
                 <td>
                     <MDBBtn color="info" @click="openModal(customer.id)">Read</MDBBtn> 
-                    <MDBBtn color="danger" @click="deleteCustomer(customer.id)">Delete</MDBBtn>
+                    <MDBBtn color="danger" @click="deleteSelected(customer.id)">Delete</MDBBtn>
                 </td>
             </tr>
         </tbody>
