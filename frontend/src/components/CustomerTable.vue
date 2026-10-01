@@ -1,6 +1,6 @@
 <script setup>
     import { ref, onMounted } from "vue";
-    import { getAllCustomers, getCustomer, updateCustomer, deleteCustomer} from '../services/customerService';
+    import { getAllCustomers, getCustomer, updateCustomer, deleteCustomer, createCustomer} from '../services/customerService';
     import { MDBBtn, MDBTable} from 'mdb-vue-ui-kit';
     import Modal from './Modal.vue';
 import CreateCustomerModal from "./CreateCustomerModal.vue";
@@ -50,8 +50,10 @@ import CreateCustomerModal from "./CreateCustomerModal.vue";
         customers.value = await getAllCustomers();
     }
 
-    async function createCustomer(customer){
+    async function postCustomer(customer){
         console.log("created customer " + JSON.stringify(customer))
+        await createCustomer(customer);
+        customers.value = await getAllCustomers();
     }
 </script>
 <template>
@@ -88,7 +90,7 @@ import CreateCustomerModal from "./CreateCustomerModal.vue";
     <CreateCustomerModal
         v-if="showCreateModal"
         @close="closeCreateModal"
-        @create="createCustomer">
+        @create="postCustomer">
         <p>Create Customer</p>
     </CreateCustomerModal>
 </template>

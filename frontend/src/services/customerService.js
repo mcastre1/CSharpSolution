@@ -29,3 +29,15 @@ export async function updateCustomer(id, customer){
     var res = await axios.put(`${API}/customers/${id}`, payload);
     return res;
 }
+
+export async function createCustomer(customer){
+    var payload = {
+        firstName : customer.firstName,
+        lastName : customer.lastName,
+        email : customer.email,
+        phoneNumber : customer.phone,
+    };
+
+    var res = await axios.post(`${API}/customers`, payload);
+    return res;
+}
