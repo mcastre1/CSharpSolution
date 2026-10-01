@@ -6,7 +6,8 @@ import HomePage from '../pages/HomePage.vue'
 
 const routes = [
   { path: '/', component: HomePage },
-  { path: '/customers', component: CustomerCRUD }
+  { path: '/customers', component: CustomerCRUD },
+  { path: '/salesreps', component: SalesRepCRUD }
 ]
 
 const router = createRouter({
