@@ -57,7 +57,7 @@
     }
 </script>
 <template>
-    <button @click="openCreateModal"> Create Customer </button>
+    <MDBBtn @click="openCreateModal" color="success"> Create Customer </MDBBtn>
     <MDBTable>
         <thead>
             <tr>
