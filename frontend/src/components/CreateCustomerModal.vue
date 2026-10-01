@@ -6,22 +6,22 @@
       <form class="form">
         <div class="form-group">
           <label>First Name</label>
-          <input type="text" v-model="newCustomer.firstName"/>
+          <input type="text" v-model="newCustomer.firstName" required/>
         </div>
 
         <div class="form-group">
           <label>Last Name</label>
-          <input type="text" v-model="newCustomer.lastName"/>
+          <input type="text" v-model="newCustomer.lastName" required/>
         </div>
 
         <div class="form-group">
           <label>Email</label>
-          <input type="email" v-model="newCustomer.email"/>
+          <input type="email" v-model="newCustomer.email" required/>
         </div>
 
         <div class="form-group">
           <label>Phone</label>
-          <input type="text" v-model="newCustomer.phone"/>
+          <input type="text" v-model="newCustomer.phone" required/>
         </div>
       </form>
 
