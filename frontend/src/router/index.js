@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 // Import your pages
 import CustomerCRUD from '../pages/CustomerCRUD.vue'
+import SalesRepCRUD from '../pages/SalesRepCRUD.vue'
 import HomePage from '../pages/HomePage.vue'
 
 const routes = [

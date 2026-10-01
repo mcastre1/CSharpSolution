@@ -3,7 +3,7 @@
     import { getAllCustomers, getCustomer, updateCustomer, deleteCustomer, createCustomer} from '../services/customerService';
     import { MDBBtn, MDBTable} from 'mdb-vue-ui-kit';
     import Modal from './Modal.vue';
-import CreateCustomerModal from "./CreateCustomerModal.vue";
+    import CreateCustomerModal from "./CreateCustomerModal.vue";
 
     const customers = ref([]);
     const showModal = ref(false);
