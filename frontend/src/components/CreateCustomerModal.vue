@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import { reactive, defineEmits } from "vue";
+import { reactive} from "vue";
 
 const emit = defineEmits(["close", "create"]);
 
@@ -45,13 +45,70 @@ const newCustomer = reactive({
   phone: ""
 })
 
+const errors = reactive({
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: ""
+});
+
 function close() {
     emit("close");
 }
 
 function create() {
+    if (!validate()) {
+      console.log("Validation failed. Customer not created.");  
+      return;
+    }
     emit("create", newCustomer);
     emit("close");
+}
+
+function validate() {
+  let valid = true;
+
+  // First Name
+  if (!newCustomer.firstName.trim()) {
+    errors.firstName = "First name is required";
+    valid = false;
+  } else if (newCustomer.firstName.length > 30) {
+    errors.firstName = "First name must be under 30 characters";
+    valid = false;
+  } else {
+    errors.firstName = "";
+  }
+
+  // Last Name
+  if (!newCustomer.lastName.trim()) {
+    errors.lastName = "Last name is required";
+    valid = false;
+  } else if (newCustomer.lastName.length > 30) {
+    errors.lastName = "Last name must be under 30 characters";
+    valid = false;
+  } else {
+    errors.lastName = "";
+  }
+
+  // Email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(newCustomer.email)) {
+    errors.email = "Invalid email address";
+    valid = false;
+  } else {
+    errors.email = "";
+  }
+
+  // Phone
+  const phoneRegex = /^[0-9]{10}$/;
+  if (!phoneRegex.test(newCustomer.phone)) {
+    errors.phone = "Phone must be a valid 10-digit number";
+    valid = false;
+  } else {
+    errors.phone = "";
+  }
+
+  return valid;
 }
 
 </script>
