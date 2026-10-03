@@ -1,5 +1,5 @@
 <script setup>
-    import { MDBTable } from 'mdb-vue-ui-kit';
+    import { MDBBtn, MDBTable } from 'mdb-vue-ui-kit';
     import { getAllSalesReps } from '../services/salesRepService';
     import { ref, onMounted } from "vue";
 
@@ -12,7 +12,7 @@
 
 </script>
 <template>
-    <button>Create Sales Rep</button>
+    <MDBBtn color="success">Create Sales Rep</MDBBtn>
     <MDBTable>
         <thead>
             <tr>
