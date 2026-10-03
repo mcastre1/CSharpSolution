@@ -22,7 +22,10 @@
             </tr>
         </thead>
         <tbody>
-
+            <tr v-for="salesrep in salesreps" :key="salesrep.id" scope="row">
+                <td>{{ salesrep.id }}</td>
+                <td>{{ salesrep.firstName }} {{ salesrep.lastName }}</td>
+            </tr>
         </tbody>
     </MDBTable>
 </template>
