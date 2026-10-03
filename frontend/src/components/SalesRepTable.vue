@@ -25,6 +25,10 @@
             <tr v-for="salesrep in salesreps" :key="salesrep.id" scope="row">
                 <td>{{ salesrep.id }}</td>
                 <td>{{ salesrep.firstName }} {{ salesrep.lastName }}</td>
+                <td>
+                    <MDBBtn color="info">View</MDBBtn>
+                    <MDBBtn color="danger">Delete</MDBBtn>
+                </td>
             </tr>
         </tbody>
     </MDBTable>
