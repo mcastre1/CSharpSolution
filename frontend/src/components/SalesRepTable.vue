@@ -1,5 +1,14 @@
 <script setup>
     import { MDBTable } from 'mdb-vue-ui-kit';
+    import { getAllSalesReps } from '../services/salesRepService';
+    import { ref, onMounted } from "vue";
+
+    const salesreps = ref([]);
+
+    onMounted(async() =>{
+        salesreps.value = await getAllSalesReps();
+        console.log(salesreps.value)
+    });
 
 </script>
 <template>
