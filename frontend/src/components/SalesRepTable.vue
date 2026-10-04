@@ -18,6 +18,10 @@ import ViewSalesRepModal from './ViewSalesRepModal.vue';
         showViewModal.value = true;
     }
 
+    function closeViewModal(){
+        showViewModal.value = false;
+    }
+
 </script>
 <template>
     <MDBBtn color="success">Create Sales Rep</MDBBtn>
@@ -43,5 +47,6 @@ import ViewSalesRepModal from './ViewSalesRepModal.vue';
 
     <ViewSalesRepModal
     v-if="showViewModal"
-    :salesrep="selectedSalesRep"/>
+    :salesrep="selectedSalesRep"
+    @close="closeViewModal"/>
 </template>
