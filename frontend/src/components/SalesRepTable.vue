@@ -6,6 +6,7 @@ import ViewSalesRepModal from './ViewSalesRepModal.vue';
 
     const salesreps = ref([]);
     const showViewModal = ref(false);
+    const selectedSalesRep = ref({});
 
     onMounted(async() =>{
         salesreps.value = await getAllSalesReps();
@@ -13,8 +14,8 @@ import ViewSalesRepModal from './ViewSalesRepModal.vue';
     });
 
     async function openViewModal(id){
-        var selectedSalesRep = await getSalesRep(id);
-        console.log(selectedSalesRep);
+        selectedSalesRep.value = await getSalesRep(id);
+        showViewModal.value = true;
     }
 
 </script>
@@ -41,5 +42,6 @@ import ViewSalesRepModal from './ViewSalesRepModal.vue';
     </MDBTable>
 
     <ViewSalesRepModal
-    v-if="showViewModal"/>
+    v-if="showViewModal"
+    :salesrep="selectedSalesRep"/>
 </template>

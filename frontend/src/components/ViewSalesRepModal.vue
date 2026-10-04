@@ -22,7 +22,7 @@ function close(){
             <form class="form">
                 <div class="form-group">
                     <label>ID</label>
-                    <input type="text" :value="SalesRepTable.id">
+                    <input type="text" :value="salesrep.id" disabled>
                 </div>
                 
             </form>
