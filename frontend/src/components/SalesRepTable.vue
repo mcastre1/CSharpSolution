@@ -1,14 +1,21 @@
 <script setup>
     import { MDBBtn, MDBTable } from 'mdb-vue-ui-kit';
-    import { getAllSalesReps } from '../services/salesRepService';
+    import { getAllSalesReps, getSalesRep } from '../services/salesRepService';
     import { ref, onMounted } from "vue";
+import ViewSalesRepModal from './ViewSalesRepModal.vue';
 
     const salesreps = ref([]);
+    const showViewModal = ref(false);
 
     onMounted(async() =>{
         salesreps.value = await getAllSalesReps();
         console.log(salesreps.value)
     });
+
+    async function openViewModal(id){
+        var selectedSalesRep = await getSalesRep(id);
+        console.log(selectedSalesRep);
+    }
 
 </script>
 <template>
@@ -26,10 +33,13 @@
                 <td>{{ salesrep.id }}</td>
                 <td>{{ salesrep.firstName }} {{ salesrep.lastName }}</td>
                 <td>
-                    <MDBBtn color="info">View</MDBBtn>
+                    <MDBBtn color="info" @click="openViewModal(salesrep.id)">View</MDBBtn>
                     <MDBBtn color="danger">Delete</MDBBtn>
                 </td>
             </tr>
         </tbody>
     </MDBTable>
+
+    <ViewSalesRepModal
+    v-if="showViewModal"/>
 </template>

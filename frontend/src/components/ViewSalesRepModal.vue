@@ -1,9 +1,21 @@
 <script setup>
+const props = defineProps({
+    salesrep: {
+        type: Object,
+        required: true
+    }
+});
+
+const emit = defineEmits(["close"])
+
+function close(){
+    emit("close");
+}
 
 </script>
 
 <template>
-    <div class="modal-backdrop">
+    <div class="modal-backdrop" @click="close">
         <div class="modal-content">
             <h1>Viewing Sales Rep</h1>
 
