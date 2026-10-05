@@ -1,6 +1,6 @@
 <script setup>
     import { MDBBtn, MDBTable } from 'mdb-vue-ui-kit';
-    import { createSalesRep, getAllSalesReps, getSalesRep } from '../services/salesRepService';
+    import { createSalesRep, deleteSalesRep, getAllSalesReps, getSalesRep } from '../services/salesRepService';
     import { ref, onMounted } from "vue";
 import ViewSalesRepModal from './ViewSalesRepModal.vue';
 import CreateSalesRepModal from './CreateSalesRepModal.vue';
@@ -37,12 +37,13 @@ import CreateSalesRepModal from './CreateSalesRepModal.vue';
         salesreps.value = await getAllSalesReps();
     }
 
-    async function deleteSalesRep(id){
+    async function deleteSelectedSalesRep(id){
         if (!confirm("Are you sure you want to delete this sales rep?")){
             return;
         }
 
-        console.log("Trying to delete sales rep id: " + id);
+        await deleteSalesRep(id);
+        salesreps.value = await getAllSalesReps();
     }
 
 </script>
@@ -62,7 +63,7 @@ import CreateSalesRepModal from './CreateSalesRepModal.vue';
                 <td>{{ salesrep.firstName }} {{ salesrep.lastName }}</td>
                 <td>
                     <MDBBtn color="info" @click="openViewModal(salesrep.id)">View</MDBBtn>
-                    <MDBBtn color="danger" @click="deleteSalesRep(salesrep.id)">Delete</MDBBtn>
+                    <MDBBtn color="danger" @click="deleteSelectedSalesRep(salesrep.id)">Delete</MDBBtn>
                 </td>
             </tr>
         </tbody>
