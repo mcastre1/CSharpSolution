@@ -35,6 +35,10 @@ const newSalesRep = reactive({
 function close(){
     emit("close");
 }
+
+function create(){
+    console.log(newSalesRep);
+}
 </script>
 
 <style>

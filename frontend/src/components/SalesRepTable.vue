@@ -3,9 +3,11 @@
     import { getAllSalesReps, getSalesRep } from '../services/salesRepService';
     import { ref, onMounted } from "vue";
 import ViewSalesRepModal from './ViewSalesRepModal.vue';
+import CreateSalesRepModal from './CreateSalesRepModal.vue';
 
     const salesreps = ref([]);
     const showViewModal = ref(false);
+    const showCreateModal = ref(false);
     const selectedSalesRep = ref({});
 
     onMounted(async() =>{
@@ -22,9 +24,17 @@ import ViewSalesRepModal from './ViewSalesRepModal.vue';
         showViewModal.value = false;
     }
 
+    function openCreateModal(){
+        showCreateModal.value = true;
+    }
+
+    function closeCreateModal(){
+        showCreateModal.value = false;
+    }
+
 </script>
 <template>
-    <MDBBtn color="success">Create Sales Rep</MDBBtn>
+    <MDBBtn color="success" @click="openCreateModal">Create Sales Rep</MDBBtn>
     <MDBTable>
         <thead>
             <tr>
@@ -49,4 +59,8 @@ import ViewSalesRepModal from './ViewSalesRepModal.vue';
     v-if="showViewModal"
     :salesrep="selectedSalesRep"
     @close="closeViewModal"/>
+
+    <CreateSalesRepModal
+    v-if="showCreateModal"
+    @close="closeCreateModal"/>
 </template>
