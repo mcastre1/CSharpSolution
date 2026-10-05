@@ -82,6 +82,6 @@ import CreateSalesRepModal from './CreateSalesRepModal.vue';
 
 <style>
 .actionBtn {
-    margin: 15px;
+    margin-left: 15px;
 }
 </style>
