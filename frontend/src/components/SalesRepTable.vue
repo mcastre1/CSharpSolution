@@ -37,6 +37,14 @@ import CreateSalesRepModal from './CreateSalesRepModal.vue';
         salesreps.value = await getAllSalesReps();
     }
 
+    async function deleteSalesRep(id){
+        if (!confirm("Are you sure you want to delete this sales rep?")){
+            return;
+        }
+
+        console.log("Trying to delete sales rep id: " + id);
+    }
+
 </script>
 <template>
     <MDBBtn color="success" @click="openCreateModal">Create Sales Rep</MDBBtn>
@@ -54,7 +62,7 @@ import CreateSalesRepModal from './CreateSalesRepModal.vue';
                 <td>{{ salesrep.firstName }} {{ salesrep.lastName }}</td>
                 <td>
                     <MDBBtn color="info" @click="openViewModal(salesrep.id)">View</MDBBtn>
-                    <MDBBtn color="danger">Delete</MDBBtn>
+                    <MDBBtn color="danger" @click="deleteSalesRep(salesrep.id)">Delete</MDBBtn>
                 </td>
             </tr>
         </tbody>
