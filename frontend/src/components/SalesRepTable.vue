@@ -62,8 +62,8 @@ import CreateSalesRepModal from './CreateSalesRepModal.vue';
                 <td>{{ salesrep.id }}</td>
                 <td>{{ salesrep.firstName }} {{ salesrep.lastName }}</td>
                 <td>
-                    <MDBBtn color="info" @click="openViewModal(salesrep.id)">View</MDBBtn>
-                    <MDBBtn color="danger" @click="deleteSelectedSalesRep(salesrep.id)">Delete</MDBBtn>
+                    <MDBBtn class="actionBtn" color="info" @click="openViewModal(salesrep.id)">View</MDBBtn>
+                    <MDBBtn class="actionBtn" color="danger" @click="deleteSelectedSalesRep(salesrep.id)">Delete</MDBBtn>
                 </td>
             </tr>
         </tbody>
@@ -79,3 +79,9 @@ import CreateSalesRepModal from './CreateSalesRepModal.vue';
     @close="closeCreateModal"
     @create="postSalesRep"/>
 </template>
+
+<style>
+.actionBtn {
+    margin: 15px;
+}
+</style>
