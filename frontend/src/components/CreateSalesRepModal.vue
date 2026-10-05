@@ -22,3 +22,13 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import {reactive} from "vue";
+const emit = defineEmits(["close", "create"]);
+
+const newSalesRep = reactive({
+    firstName: "",
+    lastName: ""
+});
+</script>
