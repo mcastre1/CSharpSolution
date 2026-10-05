@@ -37,7 +37,8 @@ function close(){
 }
 
 function create(){
-    console.log(newSalesRep);
+    emit("create", newSalesRep);
+    emit("close");
 }
 </script>
 

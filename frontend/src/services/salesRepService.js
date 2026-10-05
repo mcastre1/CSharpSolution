@@ -11,3 +11,14 @@ export async function getSalesRep(id){
     var res = await axios.get(`${API}/salesrep/${id}`)
     return res.data
 }
+
+export async function createSalesRep(salesRep){
+    var payload = {
+        firstName: salesRep.firstName,
+        lastName: salesRep.lastName
+    };
+
+    var res = await axios.post(`${API}/salesrep`, payload);
+    
+    return res;
+}

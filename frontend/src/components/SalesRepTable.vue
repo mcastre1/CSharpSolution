@@ -1,6 +1,6 @@
 <script setup>
     import { MDBBtn, MDBTable } from 'mdb-vue-ui-kit';
-    import { getAllSalesReps, getSalesRep } from '../services/salesRepService';
+    import { createSalesRep, getAllSalesReps, getSalesRep } from '../services/salesRepService';
     import { ref, onMounted } from "vue";
 import ViewSalesRepModal from './ViewSalesRepModal.vue';
 import CreateSalesRepModal from './CreateSalesRepModal.vue';
@@ -30,6 +30,11 @@ import CreateSalesRepModal from './CreateSalesRepModal.vue';
 
     function closeCreateModal(){
         showCreateModal.value = false;
+    }
+
+    async function postSalesRep(salesRep){
+        await createSalesRep(salesRep);
+        salesreps.value = await getAllSalesReps();
     }
 
 </script>
@@ -62,5 +67,6 @@ import CreateSalesRepModal from './CreateSalesRepModal.vue';
 
     <CreateSalesRepModal
     v-if="showCreateModal"
-    @close="closeCreateModal"/>
+    @close="closeCreateModal"
+    @create="postSalesRep"/>
 </template>
