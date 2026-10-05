@@ -19,6 +19,11 @@ export async function createSalesRep(salesRep){
     };
 
     var res = await axios.post(`${API}/salesrep`, payload);
-    
+
+    return res;
+}
+
+export async function deleteSalesRep(id){
+    var res = await axios.delete(`${API}/salesrep/${id}`)
     return res;
 }
