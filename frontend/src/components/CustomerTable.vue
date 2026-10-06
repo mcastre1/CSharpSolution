@@ -72,7 +72,7 @@
                 <td>{{ customer.id }}</td>
                 <td>{{ customer.firstName }} {{ customer.lastName  }}</td>
                 <td>
-                    <MDBBtn color="info" @click="openModal(customer.id)">Read</MDBBtn> 
+                    <MDBBtn color="info" @click="openModal(customer.id)">View</MDBBtn> 
                     <MDBBtn color="danger" @click="deleteSelected(customer.id)">Delete</MDBBtn>
                 </td>
             </tr>
