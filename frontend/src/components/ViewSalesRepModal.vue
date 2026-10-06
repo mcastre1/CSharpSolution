@@ -15,7 +15,7 @@ function close(){
 </script>
 
 <template>
-    <div class="modal-backdrop" @click="close">
+    <div class="modal-backdrop" @click.self="close">
         <div class="modal-content">
             <h1>Viewing Sales Rep</h1>
 
@@ -24,7 +24,21 @@ function close(){
                     <label>ID</label>
                     <input type="text" :value="salesrep.id" disabled>
                 </div>
+
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" :value="salesrep.firstName"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" :value="salesrep.lastName"/>
+                </div>
                 
+                <div class="actions">
+                    <button class="modal-btn" @click="close">Close</button>
+                    <button class="modal-btn modal-btn-primary" @click="save">Save Changes</button>
+                </div>
             </form>
         </div>
     </div>
@@ -70,5 +84,25 @@ function close(){
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #ddd;
+}
+
+.modal-btn-primary {
+  background: #007bff;
+  color: white;
 }
 </style>
