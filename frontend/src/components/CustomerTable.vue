@@ -72,8 +72,8 @@
                 <td>{{ customer.id }}</td>
                 <td>{{ customer.firstName }} {{ customer.lastName  }}</td>
                 <td>
-                    <MDBBtn color="info" @click="openModal(customer.id)">View</MDBBtn> 
-                    <MDBBtn color="danger" @click="deleteSelected(customer.id)">Delete</MDBBtn>
+                    <MDBBtn class="actionBtn" color="info" @click="openModal(customer.id)">View</MDBBtn> 
+                    <MDBBtn class="actionBtn" color="danger" @click="deleteSelected(customer.id)">Delete</MDBBtn>
                 </td>
             </tr>
         </tbody>
@@ -94,3 +94,9 @@
         <p>Create Customer</p>
     </CreateCustomerModal>
 </template>
+
+<style>
+.actionBtn {
+    margin-left: 15px;
+}
+</style>
