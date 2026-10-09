@@ -1,6 +1,7 @@
 <script setup>
 import { getAllProducts } from '../services/productService.js';
 import { onMounted, ref } from 'vue';
+import {MDBBtn, MDBTable} from 'mdb-vue-ui-kit';
 
 const products = ref([])
 
@@ -15,6 +16,7 @@ onMounted(()=>{
 
 </script>
 <template>
+    <MDBBtn color="success">Create Product</MDBBtn>
     <MDBTable>
         <thead>
             <tr>
