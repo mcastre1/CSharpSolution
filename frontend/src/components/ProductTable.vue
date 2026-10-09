@@ -15,4 +15,16 @@ onMounted(()=>{
 
 </script>
 <template>
+    <MDBTable>
+        <thead>
+            <tr>
+                <th scope="col"> ID </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="product in products" :key="product.id" scope="row">
+                <td>{{ product.id }}</td>
+            </tr>
+        </tbody>
+    </MDBTable>
 </template>
