@@ -6,12 +6,12 @@
       <form class="form">
         <div class="form-group">
           <label>Name</label>
-          <input type="text" v-model="newCustomer.firstName" required/>
+          <input type="text" v-model="newProduct.name" required/>
         </div>
 
         <div class="form-group">
           <label>Price</label>
-          <input type="text" v-model="newCustomer.lastName" required/>
+          <input type="text" v-model="newProduct.price" required/>
         </div>
       </form>
 
