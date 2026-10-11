@@ -16,6 +16,7 @@ onMounted(()=>{
 });
 
 function showCreateModal(){
+    console.log("Create modal opened");
     createModal.value = true;
 }
 
@@ -25,7 +26,7 @@ function hideCreateModal(){
 
 </script>
 <template>
-    <MDBBtn color="success">Create Product</MDBBtn>
+    <MDBBtn color="success" @click="showCreateModal">Create Product</MDBBtn>
     <MDBTable>
         <thead>
             <tr>
