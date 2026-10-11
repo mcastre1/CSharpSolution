@@ -2,6 +2,7 @@
 import { getAllProducts } from '../services/productService.js';
 import { onMounted, ref } from 'vue';
 import {MDBBtn, MDBTable} from 'mdb-vue-ui-kit';
+import CreateProductModal from './CreateProductModal.vue';
 
 const products = ref([]);
 const createModal = ref(false);
@@ -24,6 +25,10 @@ function hideCreateModal(){
     createModal.value = false;
 }
 
+function sendCreateProduct(product){
+    console.log(product);
+}
+
 </script>
 <template>
     <MDBBtn color="success" @click="showCreateModal">Create Product</MDBBtn>
@@ -43,4 +48,9 @@ function hideCreateModal(){
             </tr>
         </tbody>
     </MDBTable>
+
+    <CreateProductModal
+    v-if="createModal"
+    @create="sendCreateProduct"
+    @close="hideCreateModal"/>
 </template>
