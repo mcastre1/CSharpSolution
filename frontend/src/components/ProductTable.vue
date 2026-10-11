@@ -1,5 +1,5 @@
 <script setup>
-import { getAllProducts } from '../services/productService.js';
+import { createProcut, getAllProducts } from '../services/productService.js';
 import { onMounted, ref } from 'vue';
 import {MDBBtn, MDBTable} from 'mdb-vue-ui-kit';
 import CreateProductModal from './CreateProductModal.vue';
@@ -11,8 +11,8 @@ async function getProducts(){
     products.value = await getAllProducts();
 }
 
-onMounted(()=>{
-    getProducts();
+onMounted(async ()=>{
+    await getProducts();
     console.log(products.value);
 });
 
@@ -25,8 +25,10 @@ function hideCreateModal(){
     createModal.value = false;
 }
 
-function sendCreateProduct(product){
+async function sendCreateProduct(product){
     console.log(product);
+    var res = await createProcut(product);
+    console.log(res);
 }
 
 </script>
