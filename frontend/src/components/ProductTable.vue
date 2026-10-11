@@ -3,7 +3,8 @@ import { getAllProducts } from '../services/productService.js';
 import { onMounted, ref } from 'vue';
 import {MDBBtn, MDBTable} from 'mdb-vue-ui-kit';
 
-const products = ref([])
+const products = ref([]);
+const createModal = ref(false);
 
 async function getProducts(){
     products.value = await getAllProducts();
@@ -13,6 +14,14 @@ onMounted(()=>{
     getProducts();
     console.log(products.value);
 });
+
+function showCreateModal(){
+    createModal.value = true;
+}
+
+function hideCreateModal(){
+    createModal.value = false;
+}
 
 </script>
 <template>
