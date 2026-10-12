@@ -22,17 +22,17 @@ function close(){
             <form class="form">
                 <div class="form-group">
                     <label>ID</label>
-                    <input type="text" :value="salesrep.id" disabled>
+                    <input type="text" :value="product.id" disabled>
                 </div>
 
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" :value="salesrep.firstName"/>
+                    <input type="text" :value="product.name"/>
                 </div>
 
                 <div class="form-group">
                     <label>Price</label>
-                    <input type="text" :value="salesrep.lastName"/>
+                    <input type="text" :value="product.price"/>
                 </div>
                 
                 <div class="actions">
