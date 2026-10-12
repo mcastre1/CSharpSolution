@@ -6,6 +6,7 @@ import CreateProductModal from './CreateProductModal.vue';
 
 const products = ref([]);
 const createModal = ref(false);
+const viewModal = ref(false);
 
 async function getProducts(){
     products.value = await getAllProducts();
@@ -23,6 +24,14 @@ function showCreateModal(){
 
 function hideCreateModal(){
     createModal.value = false;
+}
+
+function showViewModal(){
+    viewModal.value = true;
+}
+
+function hideViewModal(){
+    viewModal.value = false;
 }
 
 async function sendCreateProduct(product){
