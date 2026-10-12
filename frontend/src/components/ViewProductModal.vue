@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps({
-    salesrep: {
+    product: {
         type: Object,
         required: true
     }
@@ -17,7 +17,7 @@ function close(){
 <template>
     <div class="modal-backdrop" @click.self="close">
         <div class="modal-content">
-            <h1>Viewing Sales Rep</h1>
+            <h1>Viewing Product</h1>
 
             <form class="form">
                 <div class="form-group">
@@ -26,12 +26,12 @@ function close(){
                 </div>
 
                 <div class="form-group">
-                    <label>First Name</label>
+                    <label>Name</label>
                     <input type="text" :value="salesrep.firstName"/>
                 </div>
 
                 <div class="form-group">
-                    <label>Last Name</label>
+                    <label>Price</label>
                     <input type="text" :value="salesrep.lastName"/>
                 </div>
                 
