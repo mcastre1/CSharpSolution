@@ -53,6 +53,7 @@ async function sendCreateProduct(product){
                 <th scope="col"> ID </th>
                 <th scope="col"> Name </th>
                 <th scope="col"> Price </th>
+                <th scope="col"> Actions </th>
             </tr>
         </thead>
         <tbody>
