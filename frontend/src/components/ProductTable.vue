@@ -8,6 +8,7 @@ import ViewProductModal from './ViewProductModal.vue';
 const products = ref([]);
 const createModal = ref(false);
 const viewModal = ref(false);
+const selectedProduct = ref({});
 
 async function getProducts(){
     products.value = await getAllProducts();
@@ -27,7 +28,9 @@ function hideCreateModal(){
     createModal.value = false;
 }
 
-function showViewModal(){
+function showViewModal(product){
+    selectedProduct.value = product;
+    console.log(selectedProduct.value);
     viewModal.value = true;
 }
 
@@ -57,6 +60,10 @@ async function sendCreateProduct(product){
                 <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }}</td>
+                <td>
+                    <MDBBtn class="actionBtn" color="info" @click="showViewModal({'id':product.id, 'name':product.name, 'price':product.price})">View</MDBBtn> 
+                    <MDBBtn class="actionBtn" color="danger">Delete</MDBBtn>
+                </td>
             </tr>
         </tbody>
     </MDBTable>
@@ -68,5 +75,12 @@ async function sendCreateProduct(product){
 
     <ViewProductModal
     v-if="viewModal"
+    :product="selectedProduct"
     @close="hideViewModal"/>
 </template>
+
+<style>
+.actionBtn {
+    margin-left: 15px;
+}
+</style>
