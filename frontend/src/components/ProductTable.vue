@@ -3,6 +3,7 @@ import { createProcut, getAllProducts } from '../services/productService.js';
 import { onMounted, ref } from 'vue';
 import {MDBBtn, MDBTable} from 'mdb-vue-ui-kit';
 import CreateProductModal from './CreateProductModal.vue';
+import ViewProductModal from './ViewProductModal.vue';
 
 const products = ref([]);
 const createModal = ref(false);
@@ -64,4 +65,8 @@ async function sendCreateProduct(product){
     v-if="createModal"
     @create="sendCreateProduct"
     @close="hideCreateModal"/>
+
+    <ViewProductModal
+    v-if="viewModal"
+    @close="hideViewModal"/>
 </template>
