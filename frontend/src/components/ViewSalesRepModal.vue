@@ -33,17 +33,17 @@ function update(){
             <form class="form">
                 <div class="form-group">
                     <label>ID</label>
-                    <input type="text" :value="localSalesRep.id" disabled>
+                    <input type="text" v-model="localSalesRep.id" disabled>
                 </div>
 
                 <div class="form-group">
                     <label>First Name</label>
-                    <input type="text" :value="localSalesRep.firstName"/>
+                    <input type="text" v-model="localSalesRep.firstName"/>
                 </div>
 
                 <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" :value="localSalesRep.lastName"/>
+                    <input type="text" v-model="localSalesRep.lastName"/>
                 </div>
             </form>
 

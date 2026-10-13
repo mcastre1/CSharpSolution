@@ -25,7 +25,7 @@ export async function createSalesRep(salesRep){
 
 export async function updateSalesRep(id, salesRep){
     var payload = {
-        firstName: salesRep.firstName,
+        firstName: salesRep.firstName,      
         lastName: salesRep.lastName
     }
 

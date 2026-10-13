@@ -1,6 +1,6 @@
 <script setup>
     import { MDBBtn, MDBTable } from 'mdb-vue-ui-kit';
-    import { createSalesRep, deleteSalesRep, getAllSalesReps, getSalesRep } from '../services/salesRepService';
+    import { createSalesRep, deleteSalesRep, getAllSalesReps, getSalesRep, updateSalesRep } from '../services/salesRepService';
     import { ref, onMounted } from "vue";
 import ViewSalesRepModal from './ViewSalesRepModal.vue';
 import CreateSalesRepModal from './CreateSalesRepModal.vue';
@@ -32,8 +32,10 @@ import CreateSalesRepModal from './CreateSalesRepModal.vue';
         showCreateModal.value = false;
     }
 
-    function putSalesRep(salesrep){
+    async function putSalesRep(salesrep){
         console.log(salesrep);
+        var res = await updateSalesRep(salesrep.id, salesrep);
+        salesreps.value = await getAllSalesReps();
     }
 
     async function postSalesRep(salesRep){
