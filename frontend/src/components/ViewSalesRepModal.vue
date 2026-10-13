@@ -1,9 +1,15 @@
 <script setup>
+import { reactive } from "vue";
+
 const props = defineProps({
     salesrep: {
         type: Object,
         required: true
     }
+});
+
+const localSalesRep = reactive({
+    ...props.salesrep
 });
 
 const emit = defineEmits(["close", "update"])
@@ -13,9 +19,8 @@ function close(){
 }
 
 function update(){
-    // emit("update", salesrep);
-    // emit("close");
-    console.log("updating")
+    emit("update", localSalesRep);
+    emit("close");
 }
 
 </script>
@@ -28,17 +33,17 @@ function update(){
             <form class="form">
                 <div class="form-group">
                     <label>ID</label>
-                    <input type="text" :value="salesrep.id" disabled>
+                    <input type="text" :value="localSalesRep.id" disabled>
                 </div>
 
                 <div class="form-group">
                     <label>First Name</label>
-                    <input type="text" :value="salesrep.firstName"/>
+                    <input type="text" :value="localSalesRep.firstName"/>
                 </div>
 
                 <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" :value="salesrep.lastName"/>
+                    <input type="text" :value="localSalesRep.lastName"/>
                 </div>
             </form>
 
