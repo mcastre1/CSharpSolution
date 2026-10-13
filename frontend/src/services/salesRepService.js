@@ -23,6 +23,13 @@ export async function createSalesRep(salesRep){
     return res;
 }
 
+export async function updateSalesRep(salesRep){
+    var payload = {
+        firstName: salesRep.firstName,
+        lastName: salesRep.lastName
+    }
+}
+
 export async function deleteSalesRep(id){
     var res = await axios.delete(`${API}/salesrep/${id}`)
     return res;
