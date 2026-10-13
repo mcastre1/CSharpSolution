@@ -23,11 +23,14 @@ export async function createSalesRep(salesRep){
     return res;
 }
 
-export async function updateSalesRep(salesRep){
+export async function updateSalesRep(id, salesRep){
     var payload = {
         firstName: salesRep.firstName,
         lastName: salesRep.lastName
     }
+
+    var res = await axios.put(`${API}/salesrep/${id}`, payload);
+    return res;
 }
 
 export async function deleteSalesRep(id){

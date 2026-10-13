@@ -32,6 +32,11 @@ import CreateSalesRepModal from './CreateSalesRepModal.vue';
         showCreateModal.value = false;
     }
 
+    function putSalesRep(salesrep, id){
+        console.log("updating " + id);
+        console.log(salesrep);
+    }
+
     async function postSalesRep(salesRep){
         await createSalesRep(salesRep);
         salesreps.value = await getAllSalesReps();
@@ -72,6 +77,7 @@ import CreateSalesRepModal from './CreateSalesRepModal.vue';
     <ViewSalesRepModal
     v-if="showViewModal"
     :salesrep="selectedSalesRep"
+    @update="putSalesRep"
     @close="closeViewModal"/>
 
     <CreateSalesRepModal
