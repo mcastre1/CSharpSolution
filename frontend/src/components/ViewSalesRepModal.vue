@@ -6,10 +6,16 @@ const props = defineProps({
     }
 });
 
-const emit = defineEmits(["close"])
+const emit = defineEmits(["close", "update"])
 
 function close(){
     emit("close");
+}
+
+function update(){
+    // emit("update", salesrep);
+    // emit("close");
+    console.log("updating")
 }
 
 </script>
@@ -34,12 +40,12 @@ function close(){
                     <label>Last Name</label>
                     <input type="text" :value="salesrep.lastName"/>
                 </div>
-                
-                <div class="actions">
-                    <button class="modal-btn" @click="close">Close</button>
-                    <button class="modal-btn modal-btn-primary" @click="save">Save Changes</button>
-                </div>
             </form>
+
+            <div class="actions">
+                    <button class="modal-btn" @click="close">Close</button>
+                    <button class="modal-btn modal-btn-primary" @click="update">Save Changes</button>
+            </div>
         </div>
     </div>
 </template>

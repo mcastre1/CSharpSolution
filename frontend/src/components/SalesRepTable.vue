@@ -32,8 +32,7 @@ import CreateSalesRepModal from './CreateSalesRepModal.vue';
         showCreateModal.value = false;
     }
 
-    function putSalesRep(salesrep, id){
-        console.log("updating " + id);
+    function putSalesRep(salesrep){
         console.log(salesrep);
     }
 
