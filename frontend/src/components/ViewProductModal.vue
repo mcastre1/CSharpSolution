@@ -1,4 +1,6 @@
 <script setup>
+import { reactive } from 'vue';
+
 const props = defineProps({
     product: {
         type: Object,
@@ -6,10 +8,19 @@ const props = defineProps({
     }
 });
 
-const emit = defineEmits(["close"])
+const localProduct = reactive({
+    ...props.product
+})
+
+const emit = defineEmits(["close", "save"])
 
 function close(){
     emit("close");
+}
+
+function save(){
+    emit("save", localProduct);
+    emit("close")
 }
 
 </script>
@@ -22,24 +33,25 @@ function close(){
             <form class="form">
                 <div class="form-group">
                     <label>ID</label>
-                    <input type="text" :value="product.id" disabled>
+                    <input type="text" v-model="product.id" disabled>
                 </div>
 
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" :value="product.name"/>
+                    <input type="text" v-model="product.name"/>
                 </div>
 
                 <div class="form-group">
                     <label>Price</label>
-                    <input type="text" :value="product.price"/>
+                    <input type="text" v-model="product.price"/>
                 </div>
-                
-                <div class="actions">
-                    <button class="modal-btn" @click="close">Close</button>
-                    <button class="modal-btn modal-btn-primary" @click="save">Save Changes</button>
-                </div>
+                    
             </form>
+            
+            <div class="actions">
+                <button class="modal-btn" @click="close">Close</button>
+                <button class="modal-btn modal-btn-primary" @click="save">Save Changes</button>
+            </div>
         </div>
     </div>
 </template>
