@@ -60,7 +60,7 @@ async function sendCreateProduct(product){
             <tr v-for="product in products" :key="product.id" scope="row">
                 <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
-                <td>{{ product.price }}</td>
+                <td>$ {{ product.price }}</td>
                 <td>
                     <MDBBtn class="actionBtn" color="info" @click="showViewModal({'id':product.id, 'name':product.name, 'price':product.price})">View</MDBBtn> 
                     <MDBBtn class="actionBtn" color="danger">Delete</MDBBtn>
