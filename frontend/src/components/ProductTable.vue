@@ -1,5 +1,5 @@
 <script setup>
-import { createProcut, getAllProducts } from '../services/productService.js';
+import { createProcut, deleteProduct, getAllProducts } from '../services/productService.js';
 import { onMounted, ref } from 'vue';
 import {MDBBtn, MDBTable} from 'mdb-vue-ui-kit';
 import CreateProductModal from './CreateProductModal.vue';
@@ -45,7 +45,12 @@ async function sendCreateProduct(product){
 }
 
 async function deleteProductId(id){
-
+    if(!confirm(`Are you sure you want to delete product with id ${id}?`)){
+        return;
+    }
+    
+    await deleteProduct(id);
+    products.value = await getAllProducts();
 }
 
 </script>
