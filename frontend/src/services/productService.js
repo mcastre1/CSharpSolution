@@ -15,3 +15,8 @@ export async function createProcut(product){
     var res = await axios.post(`${API}/products`, payload);
     return res;
 }
+
+export async function deleteProduct(id){
+    var res = await axios.delete(`${API}/products/${id}`);
+    return res;
+}

@@ -44,6 +44,10 @@ async function sendCreateProduct(product){
     console.log(res);
 }
 
+async function deleteProductId(id){
+
+}
+
 </script>
 <template>
     <MDBBtn color="success" @click="showCreateModal">Create Product</MDBBtn>
@@ -63,7 +67,7 @@ async function sendCreateProduct(product){
                 <td>$ {{ product.price }}</td>
                 <td>
                     <MDBBtn class="actionBtn" color="info" @click="showViewModal({'id':product.id, 'name':product.name, 'price':product.price})">View</MDBBtn> 
-                    <MDBBtn class="actionBtn" color="danger">Delete</MDBBtn>
+                    <MDBBtn class="actionBtn" color="danger" @click="deleteProductId(product.id)">Delete</MDBBtn>
                 </td>
             </tr>
         </tbody>
