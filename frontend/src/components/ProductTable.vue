@@ -54,6 +54,7 @@ async function deleteProductId(id){
 
 async function saveProduct(product){
     console.log(product);
+    products.value = await getAllProducts();
 }
 
 </script>
