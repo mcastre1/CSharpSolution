@@ -33,17 +33,17 @@ function save(){
             <form class="form">
                 <div class="form-group">
                     <label>ID</label>
-                    <input type="text" v-model="product.id" disabled>
+                    <input type="text" v-model="localProduct.id" disabled>
                 </div>
 
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" v-model="product.name"/>
+                    <input type="text" v-model="localProduct.name"/>
                 </div>
 
                 <div class="form-group">
                     <label>Price</label>
-                    <input type="text" v-model="product.price"/>
+                    <input type="text" v-model="localProduct.price"/>
                 </div>
                     
             </form>

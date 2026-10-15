@@ -30,7 +30,6 @@ function hideCreateModal(){
 
 function showViewModal(product){
     selectedProduct.value = product;
-    console.log(selectedProduct.value);
     viewModal.value = true;
 }
 
@@ -51,6 +50,10 @@ async function deleteProductId(id){
     
     await deleteProduct(id);
     products.value = await getAllProducts();
+}
+
+async function saveProduct(product){
+    console.log(product);
 }
 
 </script>
@@ -86,7 +89,8 @@ async function deleteProductId(id){
     <ViewProductModal
     v-if="viewModal"
     :product="selectedProduct"
-    @close="hideViewModal"/>
+    @close="hideViewModal"
+    @save="saveProduct"/>
 </template>
 
 <style>
