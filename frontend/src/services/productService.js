@@ -20,3 +20,13 @@ export async function deleteProduct(id){
     var res = await axios.delete(`${API}/products/${id}`);
     return res;
 }
+
+export async function putProduct(product){
+    var newProduct = {
+        'name':product.name,
+        'price':product.price
+    }
+    var res = await axios.put(`${API}/products/${product.id}`, product);
+
+    return res;
+}
