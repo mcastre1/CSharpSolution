@@ -5,12 +5,14 @@ import CustomerCRUD from '../pages/CustomerCRUD.vue'
 import SalesRepCRUD from '../pages/SalesRepCRUD.vue'
 import HomePage from '../pages/HomePage.vue'
 import ProductCRUD from '../pages/ProductCRUD.vue'
+import SalesPage from '../pages/SalesPage.vue'
 
 const routes = [
   { path: '/', component: HomePage },
   { path: '/customers', component: CustomerCRUD },
   { path: '/salesreps', component: SalesRepCRUD },
-  { path: '/products', component: ProductCRUD}
+  { path: '/products', component: ProductCRUD },
+  { path: '/sales', component: SalesPage }
 ]
 
 const router = createRouter({
