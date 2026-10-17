@@ -2,7 +2,7 @@
 import { onMounted, ref } from "vue";
 import { getAllSalesReps } from "../services/salesRepService";
 
-const selectedSalesRep = ref({});
+const selectedSalesRep = ref();
 const salesreps = ref([]);
 
 onMounted(async () => {
@@ -16,16 +16,16 @@ onMounted(async () => {
     <div>
         <!-- Sales Rep Dropdown -->
         <label> Sales Rep </label>
-        <select>
+        <select v-model="selectedSalesRep">
             <option disabled value="">Select a sales rep</option>
-            <option v-for="rep in salesreps" :key="rep.id" :value="rep.id">
+            <option v-for="rep in salesreps" :key="rep.id" :value="rep">
                 {{ rep.firstName + " " + rep.lastName}}
             </option>
         </select>
 
         <!-- Show selected rep -->
         <div v-if="selectedSalesRep">
-            <p>{{ selectedSalesRep.firstName }}</p>
+            <p>{{ selectedSalesRep.firstName + " " + selectedSalesRep.lastName}}</p>
         </div>
     </div>
 </template>
