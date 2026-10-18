@@ -27,5 +27,10 @@ onMounted(async () => {
         <div v-if="selectedSalesRep">
             <p>{{ selectedSalesRep.firstName + " " + selectedSalesRep.lastName}}</p>
         </div>
+
+        <label> Customer </label>
+        <select>
+            <option disabled value="">Select a costumer</option>
+        </select>
     </div>
 </template>
