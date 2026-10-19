@@ -3,7 +3,9 @@ import { onMounted, ref } from "vue";
 import { getAllSalesReps } from "../services/salesRepService";
 
 const selectedSalesRep = ref();
+const selectedCustomer = ref();
 const salesreps = ref([]);
+const customers = ref([]);
 
 onMounted(async () => {
     salesreps.value = await getAllSalesReps();
@@ -31,6 +33,11 @@ onMounted(async () => {
         <label> Customer </label>
         <select>
             <option disabled value="">Select a costumer</option>
+            <option v-for="customer in customers" :key="customer.id" :value="customer"/>
         </select>
+
+        <div v-if="selectedCustomer">
+            <p>{{ selectedCustomer.firstName }}</p>
+        </div>
     </div>
 </template>
