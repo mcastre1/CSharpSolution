@@ -11,6 +11,8 @@ const customers = ref([]);
 onMounted(async () => {
     salesreps.value = await getAllSalesReps();
     customers.value = await getAllCustomers();
+
+    console.log(customers);
 });
 
 </script>
@@ -32,9 +34,11 @@ onMounted(async () => {
         </div>
 
         <label> Customer </label>
-        <select>
+        <select v-model="selectedCustomer">
             <option disabled value="">Select a costumer</option>
-            <option v-for="customer in customers" :key="customer.id" :value="customer"/>
+            <option v-for="customer in customers" :key="customer.id" :value="customer">
+                {{ customer.firstName }}
+            </option>
         </select>
 
         <div v-if="selectedCustomer">
