@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { getAllSalesReps } from "../services/salesRepService";
+import { getAllCustomers } from "../services/customerService";
 
 const selectedSalesRep = ref();
 const selectedCustomer = ref();
@@ -9,7 +10,7 @@ const customers = ref([]);
 
 onMounted(async () => {
     salesreps.value = await getAllSalesReps();
-    console.log(salesreps)
+    customers.value = await getAllCustomers();
 });
 
 </script>
