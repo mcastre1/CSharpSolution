@@ -44,5 +44,24 @@ onMounted(async () => {
         <div v-if="selectedCustomer">
             <p>{{ selectedCustomer.firstName }}</p>
         </div>
+        
+        <div>
+            <hr>Sale Items</hr>
+            <table class="sales-table">
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
     </div>
 </template>
+
+<style>
+.sales-table{
+    width: 100%;
+}
+</style>
