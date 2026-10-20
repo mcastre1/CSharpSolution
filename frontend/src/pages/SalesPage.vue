@@ -6,7 +6,7 @@ import { getAllProducts } from "../services/productService";
 
 const selectedSalesRep = ref();
 const selectedCustomer = ref();
-const selectedProdcut = ref();
+const selectedProduct = ref();
 const salesreps = ref([]);
 const customers = ref([]);
 const products = ref([]);
@@ -48,15 +48,15 @@ onMounted(async () => {
         </div>
         <div>
             <label>Products</label>
-            <select>
-                <option disabled value="">Selece a product</option>
+            <select v-model="selectedProduct">
+                <option disabled value="">Select a product</option>
                 <option v-for="product in products" :key="product.id" :value="product">
                     {{ product.name }} {{ product.price }}
                 </option>
             </select>
         </div>
-        <div v-if="selectedProdcut">
-            <p>{{ selectedProdcut.name }}</p>
+        <div v-if="selectedProduct">
+            <p>{{ selectedProduct.name }}</p>
         </div>
         
         <div>
