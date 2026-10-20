@@ -44,6 +44,15 @@ onMounted(async () => {
         <div v-if="selectedCustomer">
             <p>{{ selectedCustomer.firstName }}</p>
         </div>
+        <div>
+            <label>Products</label>
+            <select>
+                <option disabled value="">Selece a product</option>
+                <option v-for="product in products" :key="product.id" :value="product">
+                    {{ product.name }} {{ product.price }}
+                </option>
+            </select>
+        </div>
         
         <div>
             <hr>Sale Items</hr>
