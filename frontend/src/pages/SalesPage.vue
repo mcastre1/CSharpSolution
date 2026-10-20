@@ -2,17 +2,19 @@
 import { onMounted, ref } from "vue";
 import { getAllSalesReps } from "../services/salesRepService";
 import { getAllCustomers } from "../services/customerService";
+import { getAllProducts } from "../services/productService";
 
 const selectedSalesRep = ref();
 const selectedCustomer = ref();
+const selectedProdcut = ref();
 const salesreps = ref([]);
 const customers = ref([]);
+const products = ref([]);
 
 onMounted(async () => {
     salesreps.value = await getAllSalesReps();
     customers.value = await getAllCustomers();
-
-    console.log(customers);
+    products.value = await getAllProducts();
 });
 
 </script>
