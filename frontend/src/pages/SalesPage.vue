@@ -55,6 +55,9 @@ onMounted(async () => {
                 </option>
             </select>
         </div>
+        <div v-if="selectedProdcut">
+            <p>{{ selectedProdcut.name }}</p>
+        </div>
         
         <div>
             <hr>Sale Items</hr>
