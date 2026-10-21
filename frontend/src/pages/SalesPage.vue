@@ -65,13 +65,15 @@ onMounted(async () => {
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tr>
-                    <td>{{ selectedProduct.name }}</td>
-                    <td>{{ selectedCustomer.price }}</td>
-                    <td>
-                        <button>Add to Sale</button>
-                    </td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td>{{ selectedProduct.name }}</td>
+                        <td>{{ selectedProduct.price }}</td>
+                        <td>
+                            <button>Add to Sale</button>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
         
