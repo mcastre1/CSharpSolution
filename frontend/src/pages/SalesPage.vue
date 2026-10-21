@@ -64,6 +64,10 @@ onMounted(async () => {
                         <th>Price</th>
                     </tr>
                 </thead>
+                <tr>
+                    <td>{{ selectedProduct.name }}</td>
+                    <td>{{ selectedCustomer.price }}</td>
+                </tr>
             </table>
         </div>
         
