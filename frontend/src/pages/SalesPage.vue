@@ -56,7 +56,15 @@ onMounted(async () => {
             </select>
         </div>
         <div v-if="selectedProduct">
-            <p>{{ selectedProduct.name }}</p>
+            <h2>Selected Product</h2>
+            <table style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
         
         <div>
