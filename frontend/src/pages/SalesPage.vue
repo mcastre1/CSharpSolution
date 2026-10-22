@@ -17,6 +17,10 @@ onMounted(async () => {
     products.value = await getAllProducts();
 });
 
+function clearRef(){
+    selectedProduct.value = null;
+}
+
 </script>
 
 <template>
@@ -70,7 +74,7 @@ onMounted(async () => {
                         <td>{{ selectedProduct.name }}</td>
                         <td>{{ selectedProduct.price }}</td>
                         <td>
-                            <button>Add to Sale</button>
+                            <button @click="clearRef()">Add to Sale</button>
                         </td>
                     </tr>
                 </tbody>
