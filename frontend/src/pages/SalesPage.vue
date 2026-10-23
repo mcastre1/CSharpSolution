@@ -93,7 +93,13 @@ function addSelectedProduct(){
                         <th>Price</th>
                     </tr>
                 </thead>
-
+                <tbody>
+                    <tr v-for="item in saleItems">
+                        <td>{{ item.name }}</td>
+                        <td></td>
+                        <td>{{ item.price }}</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
