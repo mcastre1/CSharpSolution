@@ -10,6 +10,7 @@ const selectedProduct = ref();
 const salesreps = ref([]);
 const customers = ref([]);
 const products = ref([]);
+const saleItems = ref([]);
 
 onMounted(async () => {
     salesreps.value = await getAllSalesReps();
@@ -17,7 +18,8 @@ onMounted(async () => {
     products.value = await getAllProducts();
 });
 
-function clearRef(){
+function addSelectedProduct(){
+    saleItems.value.push(selectedProduct);
     selectedProduct.value = null;
 }
 
