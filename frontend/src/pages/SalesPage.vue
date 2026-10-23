@@ -76,7 +76,7 @@ function addSelectedProduct(){
                         <td>{{ selectedProduct.name }}</td>
                         <td>{{ selectedProduct.price }}</td>
                         <td>
-                            <button @click="clearRef()">Add to Sale</button>
+                            <button @click="addSelectedProduct()">Add to Sale</button>
                         </td>
                     </tr>
                 </tbody>
