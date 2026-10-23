@@ -19,7 +19,7 @@ onMounted(async () => {
 });
 
 function addSelectedProduct(){
-    saleItems.value.push(selectedProduct);
+    saleItems.value.push(selectedProduct.value);
     selectedProduct.value = null;
 }
 
