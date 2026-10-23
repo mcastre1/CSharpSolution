@@ -101,6 +101,7 @@ function addSelectedProduct(){
                     </tr>
                 </tbody>
             </table>
+            <button>Send Order</button>
         </div>
     </div>
 </template>
