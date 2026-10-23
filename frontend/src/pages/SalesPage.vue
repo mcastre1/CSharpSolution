@@ -83,7 +83,7 @@ function addSelectedProduct(){
             </table>
         </div>
         
-        <div>
+        <div v-if="saleItems">
             <hr>Sale Items</hr>
             <table class="sales-table">
                 <thead>
@@ -93,6 +93,7 @@ function addSelectedProduct(){
                         <th>Price</th>
                     </tr>
                 </thead>
+
             </table>
         </div>
     </div>
